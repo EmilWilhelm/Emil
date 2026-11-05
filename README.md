@@ -1,24 +1,10 @@
 """
-Aktieflöde: vilka aktier på Helsingforsbörsen handlas mest och
-visar störst köp- respektive säljtryck just nu?
- 
-Kör:
-    pip install yfinance pandas numpy
-    python aktie_flode.py
- 
-OBS: Varje affär har både en köpare och en säljare, så "mest köpta" kan inte
-mätas exakt med gratisdata. Skriptet använder därför proxyvärden:
-  - omsättning (pris x volym) = mest handlade
-  - flöde = summa av (volym med tecknet för dagens kursändring) de senaste 5 dagarna,
-    jämfört med normal volym. Positivt = köptryck, negativt = säljtryck.
-Detta är inte investeringsrådgivning.
-"""
 import argparse
 import numpy as np
 import pandas as pd
 import yfinance as yf
  
-# Yahoo-tickers för några stora bolag i Helsingfors (kontrollera att alla finns)
+# Yahoo-tickers för några stora bolag i Helsingfors 
 TICKERS = {
     "NOKIA.HE": "Nokia", "KNEBV.HE": "Kone", "SAMPO.HE": "Sampo",
     "NESTE.HE": "Neste", "FORTUM.HE": "Fortum", "UPM.HE": "UPM",
